@@ -7,7 +7,6 @@ import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.rule.ActivityTestRule;
 
 import com.whughes.gadget.R;
-import com.whughes.gadget.activity.LoginActivity;
 import com.whughes.gadget.api.UserApi;
 import com.whughes.gadget.db.dao.UserDao;
 import com.whughes.gadget.util.MockServerDispatcher;
@@ -28,8 +27,6 @@ import okhttp3.mockwebserver.MockWebServer;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.typeText;
-import static androidx.test.espresso.assertion.ViewAssertions.matches;
-import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 
 @RunWith(AndroidJUnit4.class)

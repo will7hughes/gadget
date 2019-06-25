@@ -15,7 +15,9 @@ import com.whughes.gadget.network.Resource;
 import java.util.concurrent.Executor;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 
+@Singleton
 public class UserRepo {
     public static final String TAG = "USER_REPO";
 

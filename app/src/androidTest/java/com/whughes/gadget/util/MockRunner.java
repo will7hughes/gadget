@@ -7,8 +7,6 @@ import android.os.StrictMode;
 
 import androidx.test.runner.AndroidJUnitRunner;
 
-import com.whughes.gadget.TestApp;
-
 
 public class MockRunner extends AndroidJUnitRunner {
 
