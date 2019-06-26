@@ -9,6 +9,7 @@ import androidx.test.rule.ActivityTestRule;
 import com.whughes.gadget.R;
 import com.whughes.gadget.api.UserApi;
 import com.whughes.gadget.db.dao.UserDao;
+import com.whughes.gadget.ui.login.LoginActivity;
 import com.whughes.gadget.util.MockServerDispatcher;
 
 import org.junit.After;

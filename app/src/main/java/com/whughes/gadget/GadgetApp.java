@@ -1,31 +1,17 @@
 package com.whughes.gadget;
 
-import android.app.Activity;
-import android.app.Application;
-
-import com.whughes.gadget.di.AppInjector;
-
-import javax.inject.Inject;
+import com.whughes.gadget.di.DaggerAppComponent;
 
 import dagger.android.AndroidInjector;
-import dagger.android.DispatchingAndroidInjector;
-import dagger.android.HasActivityInjector;
+import dagger.android.DaggerApplication;
 
 
+public class GadgetApp extends DaggerApplication {
 
-public class GadgetApp extends Application implements HasActivityInjector {
-
-    @Inject
-    DispatchingAndroidInjector<Activity> dispatchingAndroidInjector;
 
     @Override
-    public void onCreate() {
-        super.onCreate();
-        AppInjector.init(this);
-    }
-
-    @Override
-    public DispatchingAndroidInjector<Activity> activityInjector() {
-        return dispatchingAndroidInjector;
+    protected AndroidInjector<? extends DaggerApplication> applicationInjector() {
+        return DaggerAppComponent.builder().application(this).build();
+//        return null;
     }
 }

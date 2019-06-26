@@ -7,16 +7,17 @@ import androidx.test.espresso.IdlingResource;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
-public class ServiceIdlingResource implements IdlingResource {
+public class TestIdlingResource implements IdlingResource {
     private final String TAG = "USER_SERVICE";
 
-    @Nullable private volatile ResourceCallback resourceCallback;
+    @Nullable
+    private volatile ResourceCallback resourceCallback;
 
     private AtomicBoolean isIdleNow = new AtomicBoolean(true);
 
     private String id;
 
-    public ServiceIdlingResource(String id) {
+    public TestIdlingResource(String id) {
         this.id = id;
     }
 
@@ -44,9 +45,11 @@ public class ServiceIdlingResource implements IdlingResource {
     }
 
     public void setIdleState(boolean isIdleNow) {
+        Log.d(TAG, "setIdleState: isIdleNow->" + isIdleNow);
         this.isIdleNow.set(isIdleNow);
         if (isIdleNow && this.isIdleNow != null) {
             resourceCallback.onTransitionToIdle();
+            Log.d(TAG, "setIdleState: CALLBACK SENDING");
         }
     }
 }

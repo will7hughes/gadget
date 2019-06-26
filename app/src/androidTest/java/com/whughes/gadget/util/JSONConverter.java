@@ -2,10 +2,9 @@ package com.whughes.gadget.util;
 
 import android.content.Context;
 
-import net.minidev.json.JSONValue;
-
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.json.simple.JSONValue;
 
 import java.io.BufferedReader;
 import java.io.IOException;

@@ -12,9 +12,6 @@ import retrofit2.http.Path;
 
 public interface UserApi {
 
-    @POST("UserIndex")
-    LiveData<ApiResponse<List<UserEntity>>> getLiveDataUserList();
-
     @POST("UserIndex/{username}")
     LiveData<ApiResponse<UserEntity>> getLiveDataUser(@Path("username") String username);
 

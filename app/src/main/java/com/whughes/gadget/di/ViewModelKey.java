@@ -1,6 +1,5 @@
 package com.whughes.gadget.di;
 
-
 import androidx.lifecycle.ViewModel;
 
 import java.lang.annotation.Documented;
@@ -11,10 +10,13 @@ import java.lang.annotation.Target;
 
 import dagger.MapKey;
 
+
 @Documented
 @Target({ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 @MapKey
-@interface ViewModelKey {
+public @interface ViewModelKey {
     Class<? extends ViewModel> value();
 }
+
+

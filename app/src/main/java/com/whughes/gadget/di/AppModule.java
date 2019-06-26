@@ -1,30 +1,21 @@
-/*
- * Copyright (C) 2017 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.whughes.gadget.di;
 
 import android.app.Application;
+import android.graphics.drawable.Drawable;
 
+import androidx.core.content.ContextCompat;
 import androidx.room.Room;
 
-import com.whughes.gadget.api.UserApi;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.RequestManager;
+import com.bumptech.glide.request.RequestOptions;
+import com.whughes.gadget.R;
 import com.whughes.gadget.db.AppDatabase;
-import com.whughes.gadget.db.dao.UserDao;
-import com.whughes.gadget.util.LiveDataCallAdapterFactory;
+import com.whughes.gadget.db.entity.UserEntity;
+import com.whughes.gadget.util.Constants;
+import com.whughes.gadget.network.util.LiveDataCallAdapterFactory;
 
+import javax.inject.Named;
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -32,27 +23,70 @@ import dagger.Provides;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-@Module(includes = ViewModelModule.class)
-class AppModule {
-    @Singleton @Provides
-    UserApi provideUserApi() {
+@Module
+public class AppModule {
+
+    @Singleton
+    @Provides
+    static Retrofit provideRetrofitInstance(){
         return new Retrofit.Builder()
-                .baseUrl("https://api.github.com/")
-                .addConverterFactory(GsonConverterFactory.create())
+                .baseUrl(Constants.BASE_URL)
                 .addCallAdapterFactory(new LiveDataCallAdapterFactory())
-                .build()
-                .create(UserApi.class);
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
     }
 
-    @Singleton @Provides
-    AppDatabase provideAppDatabase(Application app) {
-        return Room.databaseBuilder(app, AppDatabase.class,"gadget.db")
+    @Singleton
+    @Provides
+    static RequestOptions provideRequestOptions(){
+        return RequestOptions
+                .placeholderOf(R.drawable.white_background)
+                .error(R.drawable.white_background);
+    }
+
+    @Singleton
+    @Provides
+    static RequestManager provideGlideInstance(Application application, RequestOptions requestOptions){
+        return Glide.with(application)
+                .setDefaultRequestOptions(requestOptions);
+    }
+
+    @Singleton
+    @Provides
+    static Drawable provideAppDrawable(Application application){
+        return ContextCompat.getDrawable(application, R.drawable.logo);
+    }
+
+    @Singleton
+    @Provides
+    @Named("app_user")
+    static UserEntity someUser(){
+        return new UserEntity();
+    }
+
+
+    @Provides
+    @Singleton
+    AppDatabase providesAppDatabase(Application app) {
+        return Room.databaseBuilder(app, AppDatabase.class, "app-db")
                 .fallbackToDestructiveMigration()
                 .build();
     }
 
-    @Singleton @Provides
-    UserDao provideUserDao(AppDatabase db) {
-        return db.userDao();
-    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -2,14 +2,14 @@ package com.whughes.gadget.util;
 
 import android.content.Context;
 
-import androidx.test.platform.app.InstrumentationRegistry;
-
+import androidx.test.InstrumentationRegistry;
 
 import com.whughes.gadget.R;
 
 import okhttp3.mockwebserver.Dispatcher;
 import okhttp3.mockwebserver.MockResponse;
 import okhttp3.mockwebserver.RecordedRequest;
+
 
 public class MockServerDispatcher {
     public static final String TAG = "DISPATCH";
@@ -24,9 +24,9 @@ public class MockServerDispatcher {
         @Override
         public MockResponse dispatch(RecordedRequest request) throws InterruptedException {
             if (isOnline) {
-                if (request.getPath().equals("UserIndex")) {
-//                    String userListResponse = new JSONConverter(R.raw.user_list).getString(targetContext);
-//                    return new MockResponse().setResponseCode(200).setBody(userListResponse);
+                if (request.getPath().equals("/UserIndex/whughes")) {
+                    String userWHughes = new JSONConverter(R.raw.user_whughes).getString(targetContext);
+                    return new MockResponse().setResponseCode(200).setBody(userWHughes);
                 }
                 return new MockResponse().setResponseCode(404);
             } else {

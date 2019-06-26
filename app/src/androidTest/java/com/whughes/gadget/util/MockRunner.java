@@ -7,6 +7,8 @@ import android.os.StrictMode;
 
 import androidx.test.runner.AndroidJUnitRunner;
 
+import com.whughes.gadget.GadgetApp;
+
 
 public class MockRunner extends AndroidJUnitRunner {
 
@@ -19,6 +21,6 @@ public class MockRunner extends AndroidJUnitRunner {
     @Override
     public Application newApplication(ClassLoader cl, String className, Context context)
             throws InstantiationException, IllegalAccessException, ClassNotFoundException {
-        return super.newApplication(cl, TestApp.class.getName(), context);
+        return super.newApplication(cl, GadgetApp.class.getName(), context);
     }
 }

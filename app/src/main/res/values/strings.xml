@@ -1,6 +1,23 @@
 <resources>
-    <string name="app_name">Gadget</string>
-    <string name="title_home">Home</string>
-    <string name="title_search">Search</string>
-    <string name="title_library">Your Library</string>
+    <string name="app_name">Field App</string>
+    <string name="action_settings">Settings</string>
+    <string name="hint_word">janedoe@example.com…</string>
+    <string name="button_save">Save</string>
+    <string name="empty_not_saved">User not saved because it is empty.</string>
+    <string name="add_user">Add User</string>
+    <string name="delete_all">Delete All</string>
+    <string name="no_user">No User</string>
+    <string name="fetch">Fetch</string>
+    <string name="login">Login</string>
+    <string name="welcome">Welcome,</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="getting_graph_data">Getting Graph Data...</string>
+    <string name="action_up">Action Up</string>
+
+    <string name="companyList">CompanyList</string>
+    <string name="menu">Menu</string>
+    <string name="logout">logout</string>
+
+    <string name="fragment_profile">Profile</string>
+    <string name="fragment_posts">Posts</string>
 </resources>

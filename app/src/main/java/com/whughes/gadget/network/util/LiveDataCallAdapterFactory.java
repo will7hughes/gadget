@@ -1,4 +1,4 @@
-package com.whughes.gadget.util;
+package com.whughes.gadget.network.util;
 
 
 import androidx.lifecycle.LiveData;

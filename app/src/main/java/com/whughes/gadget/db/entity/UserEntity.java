@@ -3,6 +3,7 @@ package com.whughes.gadget.db.entity;
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import com.google.gson.annotations.Expose;
@@ -55,10 +56,12 @@ public class UserEntity {
     @ColumnInfo(name = "admin")
     private Integer admin;
 
+    @Ignore
     public UserEntity(@NonNull int userID, @NonNull String username) {
         this.userID = userID;
         this.username = username;
     }
+    public UserEntity() {}
 
     public int getUserID() {
         return userID;
